@@ -1,0 +1,128 @@
+input[type="number"] {
+  width: 90%;
+}
+
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
+
+div.option,
+div.option div,
+div.option div input {
+  cursor: pointer;
+}
+
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus {
+  color: #333;
+  text-shadow: none;
+  background-color: #fff;
+  border: .05rem solid #fff;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: #333;
+}
+
+body {
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 60px;
+  color: #fff;
+  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+}
+
+.container-top {
+  margin-top: 75px;
+  width: 90%;
+}
+
+.container-polls-list {
+  margin-top: 75px;
+  width: 65%;
+}
+
+.question-text-size {
+  font-size: 20px;
+}
+
+.pagination-text-size {
+  padding: 0 10px;
+  font-size: 19px;
+}
+
+.quotes-size {
+  padding: 10px 10px;
+  font-size: 32px;
+}
+
+.fixed-size {
+  resize: none;
+}
+
+.fixed-b {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 4%;
+}
+
+.input-transparent {
+  background: rgba(0, 0, 0, 0.0);
+  border: none;
+  color: #fff;
+  font-size: 19px;
+  letter-spacing: 1px;
+  outline: none;
+  width: 100%;
+}
+
+.div-transparent {
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 0.1em;
+  color: #fff;
+  font-size: 19px;
+  letter-spacing: 1px;
+  padding: 10px 0;
+  outline: none;
+  width: 100%;
+}
+
+.div-transparent-highlight {
+  background: rgba(0, 0, 0, 0.15);
+  border: none;
+  border-radius: 0.1em;
+  color: #fff;
+  font-size: 19px;
+  letter-spacing: 1px;
+  padding: 10px 0;
+  outline: none;
+  width: 100%;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #717171;
+  box-shadow:0 0 3px #717171;
+  border-color: #333333;
+}
+
+.custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+  box-shadow:0 0 3px #717171;
+  border-color: #333333;
+}
+
+.custom-checkbox .custom-control-input:active ~ .custom-control-label::before {
+  box-shadow:0 0 3px #717171;
+  background: rgba(66, 66, 66, 0.3);
+  border-color: #333333;
+}
+
+.custom-control-label::before {
+  background-color: #ffffff;
+  border-color: #333333;
+}

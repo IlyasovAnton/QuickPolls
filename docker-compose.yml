@@ -1,0 +1,37 @@
+version: '3.7'
+
+services:
+  django:
+    build: .
+    command: gunicorn QuickPolls.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - static_volume:/home/QuickPolls/static
+    expose:
+      - 8000
+    env_file:
+      - ./.env.dev
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=Polls_postgres_user
+      - POSTGRES_PASSWORD=Polls_postgres_password
+      - POSTGRES_DB=Polls_postgres_db
+
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
+    volumes:
+      - static_volume:/home/QuickPolls/static
+    depends_on:
+      - django
+
+
+volumes:
+  postgres_data:
+  static_volume:

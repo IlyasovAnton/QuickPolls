@@ -1,0 +1,15 @@
+{% extends 'main_app/layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+
+<div class="m-auto">
+    <h1 class="cover-heading">Best online voting site</h1>
+    <p class="lead">Create surveys and polls for your friends quickly and easily on our best website. </p>
+    <p class="lead">
+        <a href="{% url "polls:create_poll" %}" class="btn btn-lg btn-secondary">Create poll</a>
+    </p>
+</div>
+
+{% endblock %}

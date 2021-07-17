@@ -1,0 +1,66 @@
+{% extends 'main_app/layout.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+
+<div class="container-fluid container-top">
+    <form method="post">
+        <div class="row justify-content-center">
+            <div class="col-md-6 align-self-center">
+                {% csrf_token %}
+                <div class="form-group pb-4">
+                    {{ form.question|add_class:"form-control"|attr:"placeholder:Question"|attr:"rows:3"|attr:"cols:40"|attr:"autocomplete:off" }}
+                </div>
+                <div class="form-group row div-transparent ml-0 used">
+                    <div id="option-input" class="col">
+                        {{ form.option_1|add_class:"input-transparent pl-2"|attr:"placeholder:..."|attr:"autocomplete:off" }}
+                    </div>
+                </div>
+                <div class="form-group row div-transparent ml-0 used">
+                    <div id="option-input" class="col">
+                        {{ form.option_2|add_class:"input-transparent pl-2"|attr:"placeholder:..."|attr:"autocomplete:off" }}
+                    </div>
+                </div>
+                <div class="form-group row div-transparent ml-0 unused">
+                    <div id="option-input" class="col">
+                        {{ form.option_3|add_class:"input-transparent pl-2"|attr:"placeholder:Add an option"|attr:"autocomplete:off" }}
+                    </div>
+                </div>
+                <div class="form-group row div-transparent ml-0 unused invisible">
+                    <div id="option-input" class="col">
+                        {{ form.option_4|add_class:"input-transparent pl-2"|attr:"placeholder:Add an option"|attr:"autocomplete:off" }}
+                    </div>
+                </div>
+                <div class="form-group row div-transparent ml-0 unused invisible">
+                    <div id="option-input" class="col">
+                        {{ form.option_5|add_class:"input-transparent pl-2"|attr:"placeholder:Add an option"|attr:"autocomplete:off" }}
+                    </div>
+                </div>
+                <div class="form-group row div-transparent ml-0 unused invisible">
+                    <div id="option-input" class="col">
+                        {{ form.option_6|add_class:"input-transparent pl-2"|attr:"placeholder:Add an option"|attr:"autocomplete:off" }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 align-self-center">
+                <div class="row div-transparent ml-0">
+                    <div class="mx-auto">
+                        <label class="my-auto">duration in minutes
+                            <span>{{ form.duration|add_class:"form-control mx-auto" }}</span>
+                        </label>
+                        <div class="custom-control custom-checkbox pt-3">
+                            {{ form.start|add_class:"custom-control-input my-auto"|attr:"checked" }}
+                            <label for="id_start" class="custom-control-label">start immediately</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-outline-secondary my-2">Publish</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'main_app/layout.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+
+<div class="container-fluid container-top">
+    <div class="row justify-content-center">
+        <div class="col-md-6 align-self-center">
+            {% csrf_token %}
+            <div class="form-group pb-4">
+                <textarea cols="40" rows="3" class="form-control fixed-size" disabled>{{ poll.question }}</textarea>
+            </div>
+            {% for option in options %}
+            {% if option.id == voted_id %}
+                <div class="option form-group row div-transparent-highlight ml-0">
+            {% else %}
+                <div class="option form-group row div-transparent ml-0">
+            {% endif %}
+                    <div class="col-6">
+                        <input type="text" id="{{ option.id }}" value="{{ option.option }}" class="input-transparent" disabled>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" value="{{ option.votes }}" class="votes input-transparent text-right" disabled>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+            {% if not poll.is_time_expired %}
+            <div id="timer" class="col-md-3 align-self-center {{ poll.state }}">
+                <div class="row div-transparent ml-0">
+                    <div class="mx-auto">
+                        <span>Time remains: </span>
+                        <span class="minutes">{{ poll.minutes_remain }}</span>
+                        <span class="dots">:</span>
+                        <span class="seconds">{{ poll.seconds_remain }}</span>
+                    </div>
+                    <div class="btn-group btn-block mx-auto px-2 pt-4" role="group">
+                        <button id="start-timer" class="btn btn-outline-secondary">start</button>
+                        <button id="pause-timer" class="btn btn-outline-secondary">pause</button>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

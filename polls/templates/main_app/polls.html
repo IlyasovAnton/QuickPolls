@@ -1,0 +1,61 @@
+{% extends 'main_app/layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+
+<div class="container-polls-list mx-auto ">
+{% for poll in page_obj %}
+    <a class="media content-section mt-2 border border-secondary rounded" href="/vote/{{ poll.id }}">
+        <div class="media-body pl-2 pt-1 pb-0 text-left">
+            <p class="question-text-size"> {{ poll.question|truncatechars:100 }} </p>
+        </div>
+    </a>
+{% endfor %}
+</div>
+
+{% if page_obj.paginator.num_pages > 1 %}
+<div class="pagination justify-content-center fixed-bottom">
+    <span class="step-links fixed-b">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link badge-dark" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link badge-dark" href="?page={{ page_obj.previous_page_number }}">
+                    {{ page_obj.previous_page_number }}
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <span class="page-link badge-dark">Previous</span>
+            </li>
+            {% endif %}
+            <li class="page-item active">
+                <span class="page-link bg-secondary text-light border-secondary">
+                    {{ page_obj.number }}
+                    <span class="sr-only">(current)</span>
+                </span>
+            </li>
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link badge-dark" href="?page={{ page_obj.next_page_number }}">
+                    {{ page_obj.next_page_number }}
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link badge-dark" href="?page={{ page_obj.next_page_number }}">Next</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <span class="page-link badge-dark">Next</span>
+            </li>
+            {% endif %}
+            </li>
+        </ul>
+    </span>
+</div>
+{% endif %}
+
+{% endblock %}
